@@ -4,7 +4,6 @@
     <list default="true" id="a5ea7260-9533-433f-b5d8-a9cf9631744a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hash_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/hash_generator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hashes.py" beforeDir="false" afterPath="$PROJECT_DIR$/hashes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
