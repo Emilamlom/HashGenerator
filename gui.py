@@ -7,25 +7,33 @@ class GUI:
         Initializes the GUI
         """
         self.window = window
+        
+        options = ['md5', 'sha256', 'sha512']
+        opt = StringVar(self.window)
+        opt.set(options[0])
 
         self.input_frame = Frame(self.window)
+        self.input_frame.grid(column=0, row=0, columnspan=2)
         self.wordlist1_label = Label(self.input_frame, text='1st Wordlist:', padx=5, pady=5).grid(column=0, row=0)
-        self.wordlist1_entry = Entry(self.input_frame, width=10)
+        self.wordlist1_entry = Entry(self.input_frame, width=30)
         self.wordlist2_label = Label(self.input_frame, text='2nd Wordlist:', padx=5, pady=5).grid(column=0, row=1)
-        self.wordlist2_entry = Entry(self.input_frame, width=10)
+        self.wordlist2_entry = Entry(self.input_frame, width=30)
         self.suffix_label = Label(self.input_frame, text='Suffix (optional):', padx=5, pady=5).grid(column=0, row=2)
-        self.suffix_entry = Entry(self.input_frame, width=10)
+        self.suffix_entry = Entry(self.input_frame, width=30)
+        self.algo_label = Label(self.input_frame, text='Select Hash Algorithm:', padx=5, pady=5).grid(column=0, row=3)
+        self.algo_entry = OptionMenu(self.input_frame, opt, *options)
         self.wordlist1_entry.grid(column=1, row=0)
         self.wordlist2_entry.grid(column=1, row=1)
         self.suffix_entry.grid(column=1, row=2)
+        self.algo_entry.grid(column=1, row=3)
 
         self.button_frame = Frame(self.window)
-        self.button_frame.grid(column=1, row=1, columnspan=2)
+        self.button_frame.grid(column=0, row=1, columnspan=2)
         self.button_test = Button(self.button_frame, text='Test', command=self.testbutton, padx=5, pady=5, width=10).grid(column=0, row=0)
-        self.button_compute = Button(self.button_frame, text='Compute', command=self.compbutton, padx=5, pady=5, width=10).grid(column=1, row=0)
+        self.button_compute = Button(self.button_frame, text='Compute', command=self.computebutton, padx=5, pady=5, width=10).grid(column=1, row=0)
 
         self.result_frame = Frame(self.window)
-        self.result_frame.grid(column=0, row=2, columnspan=4)
+        self.result_frame.grid(column=0, row=2, columnspan=2)
 
         self.window.columnconfigure(0, weight=1)
         self.window.columnconfigure(1, weight=1)
