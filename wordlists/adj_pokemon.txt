@@ -1,0 +1,9 @@
+abandonedBulbasaur : 219b113e882c8693f616ee0760cdb85b
+abandonedIvysaur : 177d7293451045574c9d7c5b5a34e63b
+abandonedVenusaur : 66107f9bc9f97e1a2a59156c9dc2bc47
+ableBulbasaur : fad229abecb662ed3dad8ace99ace236
+ableIvysaur : ad4e3e8e8d490b5db1e0c01484842e59
+ableVenusaur : 90b12f2ae80bcd290029b862230f228a
+absoluteBulbasaur : 5b09755f02cc3a95c2d45d93df013156
+absoluteIvysaur : 2f5b697e7dd7775baa2b5b5f7bffd6ac
+absoluteVenusaur : 860cd9c22d6a0186016e952acda0e1a8

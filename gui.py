@@ -9,9 +9,9 @@ class GUI:
         """
         self.window = window
         
-        options = ['md5', 'sha256', 'sha512']
-        opt = StringVar(self.window)
-        opt.set(options[0])
+        self.options = ['md5', 'sha256', 'sha512']
+        self.opt = StringVar(self.window)
+        self.opt.set(self.options[0])
 
         self.input_frame = Frame(self.window)
         self.input_frame.grid(column=0, row=0, columnspan=3)
@@ -22,7 +22,7 @@ class GUI:
         self.suffix_label = Label(self.input_frame, text='Suffix (optional):', padx=5, pady=5).grid(column=0, row=2)
         self.suffix_entry = Entry(self.input_frame, width=30)
         self.algo_label = Label(self.input_frame, text='Select Hash Algorithm:', padx=5, pady=5).grid(column=0, row=3)
-        self.algo_entry = OptionMenu(self.input_frame, opt, *options)
+        self.algo_entry = OptionMenu(self.input_frame, self.opt, *self.options)
         self.wordlist1_entry.grid(column=1, row=0)
         self.wordlist2_entry.grid(column=1, row=1)
         self.suffix_entry.grid(column=1, row=2)
@@ -62,11 +62,7 @@ class GUI:
         if hasattr(self, 'label_result'):
             self.label_result.config(text='')
 
-        result = Hashes.hashtest(self.wordlist1_entry.get(), self.wordlist2_entry.get(), self.suffix_entry.get(), self.algo_entry.get())
-        self.wordlist1_entry.delete(0, 'end')
-        self.wordlist2_entry.delete(0, 'end')
-        self.suffix_entry.delete(0, 'end')
-        self.algo_entry.set(options[0])
+        result = Hashes.hashtest(self.wordlist1_entry.get(), self.wordlist2_entry.get(), self.suffix_entry.get(), self.opt.get())
 
         self.label_result = Label(self.result_frame, text=result, padx=5, pady=5)
         self.label_result.grid(column=0, row=0)
@@ -79,11 +75,11 @@ class GUI:
         if hasattr(self, 'label_result'):
             self.label_result.config(text='')
 
-        result = Hashes.hashbatch(self.wordlist1_entry.get(), self.wordlist2_entry.get(), self.suffix_entry.get(), self.algo_entry.get())
+        result = Hashes.hashbatch(self.wordlist1_entry.get(), self.wordlist2_entry.get(), self.suffix_entry.get(), self.opt.get())
         self.wordlist1_entry.delete(0, 'end')
         self.wordlist2_entry.delete(0, 'end')
         self.suffix_entry.delete(0, 'end')
-        self.algo_entry.set(options[0])
+        self.opt.set(self.options[0])
 
         self.label_result = Label(self.result_frame, text=result, padx=5, pady=5)
         self.label_result.grid(column=0, row=0)
