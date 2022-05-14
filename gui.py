@@ -62,7 +62,7 @@ class GUI:
         if hasattr(self, 'label_result'):
             self.label_result.config(text='')
 
-        result = Hashes.hashtest(self.wordlist1_entry.get(), self.wordlist2_entry.get(), self.suffix_entry.get(), self.opt.get())
+        result = Hashes.hashtest(self.wordlist1_entry.get(), self.wordlist2_entry.get(), self.opt.get(), self.suffix_entry.get())
 
         self.label_result = Label(self.result_frame, text=result, padx=5, pady=5)
         self.label_result.grid(column=0, row=0)
@@ -75,7 +75,7 @@ class GUI:
         if hasattr(self, 'label_result'):
             self.label_result.config(text='')
 
-        result = Hashes.hashbatch(self.wordlist1_entry.get(), self.wordlist2_entry.get(), self.suffix_entry.get(), self.opt.get())
+        result = Hashes.hashbatch(self.wordlist1_entry.get(), self.wordlist2_entry.get(), self.opt.get(), self.suffix_entry.get())
         self.wordlist1_entry.delete(0, 'end')
         self.wordlist2_entry.delete(0, 'end')
         self.suffix_entry.delete(0, 'end')

@@ -19,7 +19,7 @@ class Hashes:
         else:
             raise ValueError(f'{opt} is not a valid hashtype')
 
-    def hashtest(wordlist1, wordlist2, suffix='', option):
+    def hashtest(wordlist1, wordlist2, option, suffix=''):
         '''
         Combines wordlists and suffix and hashes them once
         :param wordlist1: filepath to a wordlist in wordlists dir
@@ -28,19 +28,19 @@ class Hashes:
         :param option: type of hash algo selected
         :return: Exit status message
         '''
-        with open(Hashes.dir + wordlist1, 'r') as f, open(Hashes.dir + wordlist2, 'r') as g:
-            word1 = f.readline().rstrip()
-            word2 = g.readline().rstrip()
-            text = word1 + word2 + str(suffix)
         try:
+            with open(Hashes.dir + wordlist1, 'r') as f, open(Hashes.dir + wordlist2, 'r') as g:
+                word1 = f.readline().rstrip()
+                word2 = g.readline().rstrip()
+                text = word1 + word2 + str(suffix)
             return f'{text}:\n' \
                    f'{Hashes.hash(text, option)}'
         except ValueError as e:
-            return e
-        except:
+            return str(e)
+        except FileNotFoundError:
             return 'An error occurred. Check your filenames.'
 
-    def hashbatch(wordlist1, wordlist2, suffix='', option):
+    def hashbatch(wordlist1, wordlist2, option, suffix=''):
         '''
         Combines wordlists and suffix and hashes them in a batch process.
         :param wordlist1: filepath to a wordlist in wordlists dir
@@ -54,7 +54,7 @@ class Hashes:
         filename = Hashes.dir + list1[0] + '_' + list2[0] + suffix + '.txt'
 
         try:
-            with open(Hashes.dir + wordlist1, 'r') as f, open(Hashes.dir + wordlist2, 'r') as g, open(filename, 'a') as h:
+            with open(Hashes.dir + wordlist1, 'r') as f, open(Hashes.dir + wordlist2, 'r') as g, open(filename, 'w') as h:
                 words1 = f.readlines()
                 words2 = g.readlines()
                 for w1 in words1:
@@ -63,9 +63,10 @@ class Hashes:
                         h.write(text + ':' + Hashes.hash(text, option) + "\n")
             return f'Hashes saved to {filename} using {option}'
         except ValueError as e:
-            return e
-        except:
+            return str(e)
+        except FileNotFoundError:
             return 'An error occurred. Check your filenames.'
 
 if __name__ == '__main__':
-    Hashes.hashbatch('pokemon.txt', 'adj.txt', '', 'md5')
+    print(Hashes.hash('', 'md5'))
+    print(Hashes.hashtest('adj.txt', 'pokmon.txt', 'md5', '123'))
